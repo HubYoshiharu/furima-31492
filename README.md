@@ -30,7 +30,7 @@
 | consignor_region_id | integer    | null: false                    |
 | shipping_days_id    | integer    | null: false                    |
 | price               | integer    | null: false                    |
-| user_id             | references | null: false, foreign_key: true |
+| user                | references | null: false, foreign_key: true |
 
 
 ### Association
@@ -46,8 +46,8 @@
 | expiration_month   | integer    | null: false                    |
 | expiration_year    | integer    | null: false                    |
 | security_code      | integer    | null: false                    |
-| user_id            | references | null: false, foreign_key: true |
-| item_id            | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -64,7 +64,7 @@
 | street_number      | string     | null: false                    | 
 | building_name      | string     | null: false                    | 
 | phone_number       | string     | null: false                    | 
-| purchase_record_id | references | null: false, foreign_key: true | 
+| purchase_record    | references | null: false, foreign_key: true | 
 
 ### Association
 
