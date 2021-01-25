@@ -20,6 +20,7 @@
 
 
 ## items テーブル
+
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | item_name           | string     | null: false                    |
@@ -35,7 +36,7 @@
 
 ### Association
 
-- has_one :shipping_record
+- has_one :purchase_record
 - belongs_to :user
 
 ## purchase_records テーブル
@@ -47,6 +48,7 @@
 
 ### Association
 
+- has_one :address
 - belongs_to :user
 - belongs_to :item
 
