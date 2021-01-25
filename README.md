@@ -42,10 +42,6 @@
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| card_information   | string     | null: false                    | 
-| expiration_month   | integer    | null: false                    |
-| expiration_year    | integer    | null: false                    |
-| security_code      | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 | item               | references | null: false, foreign_key: true |
 
