@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column           | Type    | Options      |
-| -----------------|---------|--------------|
-| nickname         | string  | null: false  |
-| email            | string  | null: false  |
-| password         | string  | null: false  |
-| lastname         | string  | null: false  |
-| firstname        | string  | null: false  |
-| lastname_reading | string  | null: false  |
-| firstname_reading| string  | null: false  |
-| birthday         | date    | null: false  |
+| Column            | Type    | Options      |
+| ----------------- |---------|--------------|
+| nickname          | string  | null: false  |
+| email             | string  | null: false  |
+| encrypted_password| string  | null: false  |
+| lastname          | string  | null: false  |
+| firstname         | string  | null: false  |
+| lastname_reading  | string  | null: false  |
+| firstname_reading | string  | null: false  |
+| birthday          | date    | null: false  |
 
 ### Association
 
