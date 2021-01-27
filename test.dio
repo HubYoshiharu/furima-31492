@@ -1,6 +1,6 @@
-<mxfile host="65bd71144e" modified="2021-01-26T13:11:34.043Z" agent="5.0 (Macintosh; Intel Mac OS X 11_0_0) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" etag="B_c2kr1AryZO_i9dN0CX" version="13.10.0" type="embed">
+<mxfile host="65bd71144e" modified="2021-01-27T12:04:44.566Z" agent="5.0 (Macintosh; Intel Mac OS X 11_0_0) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" etag="JCUFgiChx0QcMxg6Isl3" version="13.10.0" type="embed">
     <diagram id="gN0VSokvhrfHCbvqkT1D" name="Page-1">
-        <mxGraphModel dx="1138" dy="567" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="898" dy="569" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -21,7 +21,7 @@
                         <mxRectangle x="500" y="110" width="50" height="26" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="8" value="item_name&#10;description&#10;category&#10;condition&#10;burden&#10;consignor_region&#10;shipping_days&#10;price&#10;user" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;rotation=0;" parent="7" vertex="1">
+                <mxCell id="8" value="item_name&#10;description&#10;category_id&#10;condition_id&#10;burden_id&#10;prefecture_id&#10;shipping_days_id&#10;price&#10;user" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;rotation=0;" parent="7" vertex="1">
                     <mxGeometry y="26" width="160" height="174" as="geometry"/>
                 </mxCell>
                 <mxCell id="12" value="purchase_records" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;rotation=0;" parent="1" vertex="1">
@@ -37,7 +37,7 @@
                         <mxRectangle x="500" y="110" width="50" height="26" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="15" value="postal_code&#10;prefecture&#10;city&#10;street_number&#10;building_name&#10;phone_number&#10;purchase_record" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;rotation=0;" parent="14" vertex="1">
+                <mxCell id="15" value="postal_code&#10;prefecture_id&#10;city&#10;street_number&#10;building_name&#10;phone_number&#10;purchase_record" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;rotation=0;" parent="14" vertex="1">
                     <mxGeometry y="26" width="160" height="144" as="geometry"/>
                 </mxCell>
                 <mxCell id="16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERmany;startFill=0;endArrow=ERone;endFill=0;endSize=16;startSize=16;fontSize=14;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="12" target="3" edge="1">
