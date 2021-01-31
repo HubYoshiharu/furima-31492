@@ -11,7 +11,7 @@ class User < ApplicationRecord
       validates :lastname
     end
     with_options format: { with: /\A[ぁ-んァ-ン一-龥々]/, message: "is invalid. Input full-width kana characters." } do
-      validates :firstname_reading
+      validates :fristname_reading
       validates :lastname_reading
     end
     validates :nickname
