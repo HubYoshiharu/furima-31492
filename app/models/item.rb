@@ -16,11 +16,13 @@ class Item < ApplicationRecord
       validates :prefecture_id
       validates :shipping_days_id
     end
-    validates :price, numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of range"}, format: {with: /\A[0-9]+\z/, message: "must be half-width characters"}
+    validates :price
     validates :user
   end
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of range' }
+  validates :price, numericality: { only_integer: true, message: 'must be half-width numbers' }
 
   def was_attached?
-    self.image.attached?
+    image.attached?
   end
 end
