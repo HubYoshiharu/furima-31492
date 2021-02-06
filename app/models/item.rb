@@ -17,7 +17,6 @@ class Item < ApplicationRecord
       validates :shipping_days_id
     end
     validates :price
-    validates :user
   end
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of range' }
   validates :price, numericality: { only_integer: true, message: 'must be half-width numbers' }
