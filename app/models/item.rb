@@ -3,7 +3,11 @@ class Item < ApplicationRecord
   has_one :purchase_record
   has_one_attached :image
   belongs_to :user
-  belongs_to :category, :condition, :burden, :prefecture, :shipping_days
+  belongs_to_active_hash :category
+  belongs_to_active_hash :condition
+  belongs_to_active_hash :burden
+  belongs_to_active_hash :prefecture
+  belongs_to_active_hash :shipping_days
 
   with_options presence: true do
     validates :image, unless: :was_attached?
