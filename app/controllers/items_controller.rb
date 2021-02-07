@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :move_to_index, only: :edit
   before_action :generate_instance_for_found_item, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_index, only: :edit
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -56,7 +56,6 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    @item = Item.find(params[:id])
     redirect_to action: :index if current_user.id != @item.user.id || @item.purchase_record.present?
   end
 
