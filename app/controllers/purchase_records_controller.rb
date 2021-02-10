@@ -1,12 +1,14 @@
 class PurchaseRecordsController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
+  before_action :generate_instance_for_found_item, only: [:index, :create]
+  before_action :move_to_index, only: :index
+
   def index
-    @item = Item.find(params[:item_id])
     @purchase_data = PurchaseData.new
   end
 
   def create
     @purchase_data = PurchaseData.new(purchase_params)
-    @item = Item.find(params[:item_id])
     if @purchase_data.valid?
       @purchase_data.save(params[:item_id], current_user.id)
       redirect_to root_path
@@ -20,4 +22,12 @@ class PurchaseRecordsController < ApplicationController
   def purchase_params
     params.require(:purchase_data).permit(:postal_code, :prefecture_id, :city, :street_number, :building_name, :phone_number)
   end
+
+  def move_to_index
+    redirect_to root_path if current_user.id == @item.user.id || @item.purchase_record.present?
+  end
+
+  def generate_instance_for_found_item
+    @item = Item.find(params[:item_id])
+  end    
 end
