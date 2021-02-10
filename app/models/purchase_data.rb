@@ -1,0 +1,18 @@
+class PurchaseData
+  include ActiveModel::Model
+  attr_accessor :postal_code, :prefecture_id, :city, :street_number, :building_name, :phone_number
+  
+  with_options presence: true do
+    validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank"}
+    validates :city, format: { with: /\A[ぁ-んァ-ン一-龥々]+\z/, message: "is invalid. Input full-width characters" }
+    validates :street_number, format: { with: /\A[ぁ-んァ-ン一-龥々]*\d+(-\d+)*\z/, message: "is invalid"}
+    validates :phone_number, format: { with: /\A\d{1,11}\z/, message: "length must be within 11 digit"}
+  end
+  validates :building_name, format: { with: /\A[ぁ-んァ-ン一-龥々]/, message: "is invalid. Input full-width characters" }
+
+  def save(item_id, user_id)
+    purchase_record = PurchaseRecord.create(item_id: item_id, user_id: user_id)
+    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, street_number: street_number, building_name: building_name, phone_number: phone_number, purchase_record_id: purchase_record.id)
+  end 
+end
