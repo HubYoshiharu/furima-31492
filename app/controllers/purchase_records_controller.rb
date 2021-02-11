@@ -21,11 +21,12 @@ class PurchaseRecordsController < ApplicationController
   private
 
   def purchase_params
-    params.require(:purchase_data).permit(:postal_code, :prefecture_id, :city, :street_number, :building_name, :phone_number).merge(token: params[:token])
+    params.require(:purchase_data).permit(:postal_code, :prefecture_id, :city, :street_number, :building_name,
+                                          :phone_number).merge(token: params[:token])
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: purchase_params[:token],
@@ -39,5 +40,5 @@ class PurchaseRecordsController < ApplicationController
 
   def generate_instance_for_found_item
     @item = Item.find(params[:item_id])
-  end    
+  end
 end
