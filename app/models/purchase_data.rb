@@ -7,13 +7,17 @@ class PurchaseData
     validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank"}
     validates :city, format: { with: /\A[ぁ-んァ-ン一-龥々]+\z/, message: "is invalid. Input full-width characters" }
     validates :street_number, format: { with: /\A[ぁ-んァ-ン一-龥々]*\d+(-\d+)*\z/, message: "is invalid"}
-    validates :phone_number, format: { with: /\A\d{1,11}\z/, message: "length must be within 11 digit"}
+    validates :phone_number, format: { with: /\A\d{1,11}\z/, message: "length must be within 11 digits"}
     validates :token
   end
-  validates :building_name, format: { with: /\A[ぁ-んァ-ン一-龥々]/, message: "is invalid. Input full-width characters" }
+  validates :building_name, format: { with: /\A[ぁ-んァ-ン一-龥々]/, message: "is invalid. Input full-width characters" }, if: :building_name_present? 
 
   def save(item_id, user_id)
     purchase_record = PurchaseRecord.create(item_id: item_id, user_id: user_id)
     Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, street_number: street_number, building_name: building_name, phone_number: phone_number, purchase_record_id: purchase_record.id)
-  end 
+  end
+
+  def building_name_present?
+    self.building_name.present?
+  end
 end
