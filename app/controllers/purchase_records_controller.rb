@@ -10,6 +10,7 @@ class PurchaseRecordsController < ApplicationController
   def create
     @purchase_data = PurchaseData.new(purchase_params)
     if @purchase_data.valid?
+      pay_item
       @purchase_data.save(params[:item_id], current_user.id)
       redirect_to root_path
     else
@@ -20,7 +21,16 @@ class PurchaseRecordsController < ApplicationController
   private
 
   def purchase_params
-    params.require(:purchase_data).permit(:postal_code, :prefecture_id, :city, :street_number, :building_name, :phone_number)
+    params.require(:purchase_data).permit(:postal_code, :prefecture_id, :city, :street_number, :building_name, :phone_number).merge(token: params[:token])
+  end
+
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: purchase_params[:token],
+      currency: 'jpy'
+    )
   end
 
   def move_to_index
