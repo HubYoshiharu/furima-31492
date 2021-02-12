@@ -1,6 +1,6 @@
 class PurchaseData
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture_id, :city, :street_number, :building_name, :phone_number, :token
+  attr_accessor :postal_code, :prefecture_id, :city, :street_number, :building_name, :phone_number, :item_id, :user_id, :token
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: 'is invalid. Include hyphen(-)' }
@@ -13,7 +13,7 @@ class PurchaseData
   validates :building_name, format: { with: /\A[ぁ-んァ-ン一-龥々]/, message: 'is invalid. Input full-width characters' },
                             if: :building_name_present?
 
-  def save(item_id, user_id)
+  def save
     purchase_record = PurchaseRecord.create(item_id: item_id, user_id: user_id)
     Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, street_number: street_number,
                    building_name: building_name, phone_number: phone_number, purchase_record_id: purchase_record.id)

@@ -11,7 +11,7 @@ class PurchaseRecordsController < ApplicationController
     @purchase_data = PurchaseData.new(purchase_params)
     if @purchase_data.valid?
       pay_item
-      @purchase_data.save(params[:item_id], current_user.id)
+      @purchase_data.save
       redirect_to root_path
     else
       render action: :index
@@ -22,7 +22,7 @@ class PurchaseRecordsController < ApplicationController
 
   def purchase_params
     params.require(:purchase_data).permit(:postal_code, :prefecture_id, :city, :street_number, :building_name,
-                                          :phone_number).merge(token: params[:token])
+                                          :phone_number).merge(token: params[:token], item_id: params[:item_id], user_id: current_user.id)
   end
 
   def pay_item
