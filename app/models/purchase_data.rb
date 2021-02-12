@@ -10,6 +10,8 @@ class PurchaseData
     validates :phone_number, format: { with: /\A\d{1,11}\z/, message: 'length must be within 11 digits' }
     validates :token
   end
+  validates :user_id, presence: { message: "id can't be blank" }
+  validates :item_id, presence: { message: "id can't be blank" }
   validates :building_name, format: { with: /\A[ぁ-んァ-ン一-龥々]/, message: 'is invalid. Input full-width characters' },
                             if: :building_name_present?
 
