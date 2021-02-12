@@ -4,7 +4,6 @@ RSpec.describe PurchaseData, type: :model do
   describe '商品購入機能の確認' do
     before do
       @purchase_data = FactoryBot.build(:purchase_data)
-
     end
 
     context '内容に問題がない場合' do
