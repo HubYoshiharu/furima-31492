@@ -72,6 +72,11 @@ RSpec.describe PurchaseData, type: :model do
         @purchase_data.valid?
         expect(@purchase_data.errors.full_messages).to include('Phone number length must be within 11 digits')
       end
+      it 'phone_numberは半角英数字混合だと保存できないこと' do
+        @purchase_data.phone_number = 'test123456'
+        @purchase_data.valid?
+        expect(@purchase_data.errors.full_messages).to include('Phone number length must be within 11 digits')
+      end
       it 'tokenが空だと保存できないこと' do
         @purchase_data.token = nil
         @purchase_data.valid?
