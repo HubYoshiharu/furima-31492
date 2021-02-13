@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe PurchaseData, type: :model do
   describe '商品購入機能の確認' do
     before do
-      @purchase_data = FactoryBot.build(:purchase_data)
+      @item = FactoryBot.create(:item)
+      sleep (0.1)
+      @purchase_data = FactoryBot.build(:purchase_data, user_id: @item.user_id, item_id: @item.id)
     end
 
     context '内容に問題がない場合' do
